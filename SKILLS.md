@@ -2,7 +2,7 @@
 
 ## Job Search
 
-### [gmail-job-search](skills/gmail-job-search.md)
+### [gmail-job-search](skills/gmail-job-search/SKILL.md)
 
 Filters job alert emails and recruiter outreach from Gmail against your personal job criteria.
 

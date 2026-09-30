@@ -1,8 +1,10 @@
 # agent-skills
 
-A growing library of reusable AI agent skills for Kiro and other MCP-compatible AI assistants.
+A growing library of reusable AI agent skills for Claude Code, Kiro, and other MCP-compatible AI assistants.
 
-Skills in this repo are generic by design. Personal configuration stays in your own data files, outside any repository. Drop any skill into your project's `.kiro/skills/` directory and provide the files it requires to get started.
+Skills in this repo are generic by design. Personal configuration stays in your own data files, outside any repository.
+
+Each skill is a folder containing a `SKILL.md`, following the [Agent Skills](https://agentskills.io) format: YAML frontmatter with a `name` and a `description` (which the agent uses to decide when to apply the skill), followed by the instructions.
 
 ## Philosophy
 
@@ -13,19 +15,26 @@ Skills in this repo are generic by design. Personal configuration stays in your 
 
 ## Installation
 
-Copy any skill into your project's `.kiro/skills/` directory:
+### Claude Code
+
+Symlink a skill into your user skills directory so edits to this repo take effect immediately:
 
 ```bash
-cp skills/gmail-job-search.md /path/to/your/project/.kiro/skills/
+mkdir -p ~/.claude/skills
+ln -s "$PWD/skills/gmail-job-search" ~/.claude/skills/gmail-job-search
 ```
 
-Or install user-wide so it's available across all your projects:
+Claude uses the skill automatically when a request matches its description, or you can invoke it with `/gmail-job-search`. For a single project, link it into that project's `.claude/skills/` instead.
+
+### Kiro
+
+Copy the skill into your project's `.kiro/skills/` directory, or into `~/.kiro/skills/` to make it available across projects:
 
 ```bash
-cp skills/gmail-job-search.md ~/.kiro/skills/
+cp skills/gmail-job-search/SKILL.md ~/.kiro/skills/gmail-job-search.md
 ```
 
-Then follow the setup instructions in each skill file.
+Then follow the requirements section of each skill.
 
 ## Available Skills
 
@@ -33,7 +42,7 @@ See [SKILLS.md](SKILLS.md) for the full index with descriptions and requirements
 
 | Skill | Description | Requires |
 |-------|-------------|---------|
-| [gmail-job-search](skills/gmail-job-search.md) | Filter job alert emails and recruiter outreach against your personal criteria | Gmail MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
+| [gmail-job-search](skills/gmail-job-search/SKILL.md) | Filter job alert emails and recruiter outreach against your personal criteria | Gmail MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
 
 ## Related
 

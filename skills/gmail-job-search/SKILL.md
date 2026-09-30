@@ -1,3 +1,8 @@
+---
+name: gmail-job-search
+description: Filter Gmail job alert emails and recruiter outreach against the user's personal criteria in ~/.jobsearch/job-criteria.md, skipping roles already in ~/.jobsearch/applications.md. Use when the user asks to check email for job alerts, job postings, recruiter reach-outs, or replies from companies they applied to, or to log a submitted application.
+---
+
 # Gmail Job Search Skill
 
 Filter job alert emails and recruiter outreach from Gmail against your personal job criteria.
