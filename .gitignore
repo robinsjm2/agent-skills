@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Credentials — never commit these
+*.credentials.json
+*-credentials.json
+*-token.json
+*.token.json
+.env
+.kiro/settings/mcp.json
