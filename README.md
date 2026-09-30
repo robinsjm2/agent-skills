@@ -43,6 +43,7 @@ See [SKILLS.md](SKILLS.md) for the full index with descriptions and requirements
 | Skill | Description | Requires |
 |-------|-------------|---------|
 | [gmail-job-search](skills/gmail-job-search/SKILL.md) | Filter job alert emails and recruiter outreach against your personal criteria | Gmail MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
+| [job-search-sweep](skills/job-search-sweep/SKILL.md) | Search Indeed for new openings and verify remote status, pay, and fit from the full postings | Indeed MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
 
 ## Related
 

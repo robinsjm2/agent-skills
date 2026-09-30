@@ -31,4 +31,28 @@ In Kiro, prefix with `#job-criteria` if your workspace has the [job-criteria ste
 
 ---
 
+### [job-search-sweep](skills/job-search-sweep/SKILL.md)
+
+Searches Indeed for new openings that match your personal job criteria, then checks each promising posting in full.
+
+**What it does:**
+- Runs several targeted Indeed searches built from your criteria's role types and strengths
+- Fetches full postings to confirm the real remote status, pay, and requirements (a remote search still returns on-site roles)
+- Skips roles you have already applied to, or that were presented in a previous sweep
+- Checks employer ratings for top matches
+- Formats results as Strong match / Possible match and saves a short sweep record
+
+**Requires:**
+- Indeed MCP connected ([Indeed MCP docs](https://docs.indeed.com/mcp/)); in Claude, add the Indeed connector at claude.ai
+- `~/.jobsearch/job-criteria.md` — your personal job criteria (see [template](https://github.com/robinsjm2/jobsearch-harness/blob/main/templates/job-criteria.md))
+- `~/.jobsearch/applications.md` — your application tracker (see [template](https://github.com/robinsjm2/jobsearch-harness/blob/main/templates/applications.md))
+
+**Invoke with:**
+```
+find new remote jobs that match my criteria
+```
+or `/job-search-sweep`
+
+---
+
 *More skills coming. Topics in progress: Tyme sprint review, LinkedIn post drafting, technical interview prep.*
