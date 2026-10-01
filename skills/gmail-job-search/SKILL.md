@@ -54,16 +54,22 @@ Activate this skill when the user asks any of the following:
 2. Search Gmail for:
    - Direct recruiter messages: `subject:opportunity OR subject:role OR subject:position OR subject:reaching out`
    - Application status replies: `subject:application OR subject:interview OR subject:next steps OR subject:thank you for applying`
+   - Messages from applicant tracking systems, whatever the subject line. Subjects vary widely (e.g. "Thanks for your interest in <Company>!", "Position Status Update"), so search by sender:
+     `from:greenhouse-mail.io OR from:greenhouse.io OR from:hire.lever.co OR from:ashbyhq.com OR from:myworkday.com OR from:workablemail.com OR from:smartrecruiters.com OR from:icims.com OR from:jobvite.com OR from:bamboohr.com OR from:rippling.com OR from:dover.com`
    - Filter to the time window the user specified (default: last 7 days)
 3. Retrieve content for each message.
 4. For each message, check `applications.md`:
    - If the company matches an existing application: flag as **Follow-up on existing application** — always include regardless of fit
-   - If the company is not in the applications list: treat as new inbound outreach and evaluate fit against criteria
+   - If it is an applicant-tracking message (confirmation, assessment, status update, rejection) for a company **not** in the tracker: flag as **Untracked application** and offer to add it to the tracker with the role and date from the email
+   - If the company is not in the applications list and the message is not an application update: treat as new inbound outreach and evaluate fit against criteria
 5. Categorize each as:
    - **Follow-up on existing application** — response to something already applied to (always show)
+   - **Untracked application** — evidence of an application missing from the tracker (always show)
+   - **Action required** — e.g. a pending assessment, scheduling request, or form to complete (always show, with any deadline)
    - **New recruiter outreach** — someone proactively reaching out (evaluate fit and show if relevant)
-   - **Automated rejection** — form rejection (mention count only)
+   - **Automated rejection** — form rejection (mention count only, but update the tracker status for tracked applications)
    - **Other** — flag if potentially relevant
+6. When a role in the job alerts is at a company with an open application in the tracker, note it ("already applied to <other role> on <date>") rather than presenting it as a fresh lead.
 
 ## Output format
 
