@@ -41,9 +41,20 @@ Extract and list, briefly:
 
 Build a coverage table: each must-have → the fact-bank entries that support it, rated **Strong** (direct evidence), **Partial** (related or transferable), or **Gap** (no evidence).
 
-For each gap, ask the user whether they have that experience. If they do, get specifics (what, where, when, outcome) and **add it to the fact bank** with today's date before using it. If they don't, leave it out of the resume and list it in the report.
+### 4. Confirm the user wants to continue
 
-### 4. Draft the resume
+Present why the role fits (or doesn't) against the criteria, the coverage table, and the main risks. Then **stop and ask** a simple question such as: "Does it sound like a good fit to you? Should we continue?" Don't ask about gaps or start drafting until the user says yes. They may decide the role isn't worth the effort.
+
+### 5. Close gaps conversationally
+
+For each gap, ask whether the user has that experience. If they do, get specifics (what, where, when, outcome) and **add it to the fact bank** with today's date before using it. If they don't, leave it out of the resume and list it in the report.
+
+- **With more than 2–3 gaps, ask one question at a time.** Wait for the answer, acknowledge it briefly (and say what it changes), then ask the next. Don't send a long numbered list that needs a long answer.
+- Ask the highest-impact gaps first, i.e. the must-haves where an answer would most change the resume.
+- Keep each question short and concrete, with an example of what counts.
+- Stop asking when the remaining gaps wouldn't change the resume; tell the user how many were skipped.
+
+### 6. Draft the resume
 
 Write it in the Markdown format `render_docx.py` expects:
 
@@ -72,7 +83,7 @@ Drafting rules (unless `lessons.md` says otherwise):
 - **Keep it to 1–2 pages.** Give older roles one bullet each.
 - **Keep facts consistent across documents.** Use the same years of experience, titles, and dates as the user's other profiles, as recorded in `lessons.md`.
 
-### 5. Self-check
+### 7. Self-check
 
 Before presenting, verify each of these and fix anything that fails:
 
@@ -82,7 +93,7 @@ Before presenting, verify each of these and fix anything that fails:
 - No rule in `lessons.md` is violated
 - Dates, titles, and contact details match the fact bank
 
-### 6. Save and render
+### 8. Save and render
 
 1. Save the Markdown to `~/.jobsearch/resume/tailored/YYYY-MM-DD-<company>-<role-slug>.md`.
 2. Render it:
@@ -91,7 +102,7 @@ Before presenting, verify each of these and fix anything that fails:
    ```
    This writes a `.docx` next to the Markdown file.
 
-### 7. Report
+### 9. Report
 
 Show the user:
 
