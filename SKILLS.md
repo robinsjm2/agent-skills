@@ -55,4 +55,28 @@ or `/job-search-sweep`
 
 ---
 
+### [tailor-resume](skills/tailor-resume/SKILL.md)
+
+Tailors your resume to a specific job posting using only verified facts, then renders it to .docx.
+
+**What it does:**
+- Extracts the posting's must-haves and key terms, and maps each to your fact bank (Strong / Partial / Gap)
+- Asks about gaps, and adds confirmed experience to the fact bank, instead of inventing it
+- Drafts a 1–2 page resume that leads with the posting's top need and uses its wording where true
+- Self-checks every bullet against the fact bank, then renders .docx with `render_docx.py`
+- Records which resume version went to which application, and learns rules from your feedback and from outcomes
+
+**Requires:**
+- `~/.jobsearch/resume/fact-bank.md` and `~/.jobsearch/resume/lessons.md` (see [templates](https://github.com/robinsjm2/jobsearch-harness/tree/main/templates/resume))
+- `~/.jobsearch/job-criteria.md` and `~/.jobsearch/applications.md`
+- `uv` (or Python with `python-docx`) for .docx output
+
+**Invoke with:**
+```
+tailor my resume for the Senior Backend Engineer role at Acme
+```
+or `/tailor-resume`
+
+---
+
 *More skills coming. Topics in progress: Tyme sprint review, LinkedIn post drafting, technical interview prep.*

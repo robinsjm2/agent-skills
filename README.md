@@ -22,6 +22,7 @@ Symlink a skill into your user skills directory so edits to this repo take effec
 ```bash
 mkdir -p ~/.claude/skills
 ln -s "$PWD/skills/gmail-job-search" ~/.claude/skills/gmail-job-search
+# repeat for each skill you want, e.g. tailor-resume
 ```
 
 Claude uses the skill automatically when a request matches its description, or you can invoke it with `/gmail-job-search`. For a single project, link it into that project's `.claude/skills/` instead.
@@ -44,6 +45,7 @@ See [SKILLS.md](SKILLS.md) for the full index with descriptions and requirements
 |-------|-------------|---------|
 | [gmail-job-search](skills/gmail-job-search/SKILL.md) | Filter job alert emails and recruiter outreach against your personal criteria | Gmail MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
 | [job-search-sweep](skills/job-search-sweep/SKILL.md) | Search Indeed for new openings and verify remote status, pay, and fit from the full postings | Indeed MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
+| [tailor-resume](skills/tailor-resume/SKILL.md) | Tailor a resume to one posting from a verified fact bank, render .docx, and learn from outcomes | `~/.jobsearch/resume/` fact bank and lessons, `uv` |
 
 ## Related
 
