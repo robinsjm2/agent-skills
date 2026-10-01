@@ -21,6 +21,8 @@ Templates for both are in the [jobsearch-harness templates](https://github.com/r
 - The job posting: full text from Indeed (`get_job_details`), a URL the user provides, or pasted text. Use the full posting, not a search-result summary.
 - For .docx output: `uv` (or Python with `python-docx`) to run `render_docx.py` in this skill's directory.
 
+**Data directory:** this skill uses `~/.jobsearch/` by default. If the project's instructions (CLAUDE.md or AGENTS.md) name a different data directory, use that path everywhere this skill says `~/.jobsearch/`. This is useful for demos and test data.
+
 ## Behavior
 
 ### 1. Load context

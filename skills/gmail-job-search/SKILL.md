@@ -19,6 +19,8 @@ For Gmail MCP setup instructions, see the [setup guide](https://github.com/robin
 For the job criteria format, see the [example criteria file](https://github.com/robinsjm2/jobsearch-harness/blob/main/templates/job-criteria.md).
 For the application tracker format, see the [template](https://github.com/robinsjm2/jobsearch-harness/blob/main/templates/applications.md).
 
+**Data directory:** this skill uses `~/.jobsearch/` by default. If the project's instructions (CLAUDE.md or AGENTS.md) name a different data directory, use that path everywhere this skill says `~/.jobsearch/`. This is useful for demos and test data.
+
 ## When to activate
 
 Activate this skill when the user asks any of the following:

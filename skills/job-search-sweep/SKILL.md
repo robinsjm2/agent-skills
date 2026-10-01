@@ -19,6 +19,8 @@ For file formats, see the templates for [criteria](https://github.com/robinsjm2/
 
 If either file is missing, tell the user and point them to the templates. Do not guess at their criteria.
 
+**Data directory:** this skill uses `~/.jobsearch/` by default. If the project's instructions (CLAUDE.md or AGENTS.md) name a different data directory, use that path everywhere this skill says `~/.jobsearch/`. This is useful for demos and test data.
+
 ## Behavior
 
 ### 1. Load context
