@@ -11,6 +11,9 @@ Format (one element per line):
     *Job title*
     - bullet (supports **bold** spans)
     plain paragraph (supports **bold** spans)
+
+Links become clickable: [text](url), email addresses (mailto:), and bare
+web addresses with a path such as linkedin.com/in/name or github.com/user.
 """
 
 import re
@@ -19,6 +22,7 @@ from pathlib import Path
 
 from docx import Document
 from docx.enum.text import WD_TAB_ALIGNMENT
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
@@ -30,16 +34,78 @@ HEADING_PT = 11
 RIGHT_TAB = Inches(7.5)
 
 
+# [text](url), an email address, or a bare web address with a path
+# (e.g. github.com/user). Bare domains without a path are left as text.
+LINK_RE = re.compile(
+    r"\[(?P<label>[^\]]+)\]\((?P<url>[^)]+)\)"
+    r"|(?P<email>[\w.+-]+@[\w-]+(?:\.[\w-]+)+)"
+    r"|(?P<web>(?:https?://)?(?:[\w-]+\.)+[a-z]{2,}/[^\s|,;)]+)"
+)
+
+
+def add_text_run(paragraph, text, size, bold, italic):
+    run = paragraph.add_run(text)
+    run.font.name = FONT
+    run.font.size = Pt(size)
+    run.bold = bold
+    run.italic = italic
+
+
+def add_hyperlink(paragraph, label, url, size, bold, italic):
+    """Append a clickable hyperlink run (blue, underlined) to the paragraph."""
+    r_id = paragraph.part.relate_to(url, RT.HYPERLINK, is_external=True)
+    link = OxmlElement("w:hyperlink")
+    link.set(qn("r:id"), r_id)
+    run = OxmlElement("w:r")
+    props = OxmlElement("w:rPr")
+    fonts = OxmlElement("w:rFonts")
+    for attr in ("w:ascii", "w:hAnsi", "w:cs"):
+        fonts.set(qn(attr), FONT)
+    props.append(fonts)
+    color = OxmlElement("w:color")
+    color.set(qn("w:val"), "0563C1")
+    props.append(color)
+    underline = OxmlElement("w:u")
+    underline.set(qn("w:val"), "single")
+    props.append(underline)
+    if bold:
+        props.append(OxmlElement("w:b"))
+    if italic:
+        props.append(OxmlElement("w:i"))
+    half_points = OxmlElement("w:sz")
+    half_points.set(qn("w:val"), str(int(size * 2)))
+    props.append(half_points)
+    run.append(props)
+    text = OxmlElement("w:t")
+    text.text = label
+    text.set(qn("xml:space"), "preserve")
+    run.append(text)
+    link.append(run)
+    paragraph._p.append(link)
+
+
 def add_runs(paragraph, text, size=BODY_PT, bold=False, italic=False):
-    """Add text to a paragraph, honoring **bold** spans."""
+    """Add text to a paragraph, honoring **bold** spans and links."""
     for i, part in enumerate(re.split(r"\*\*(.+?)\*\*", text)):
         if not part:
             continue
-        run = paragraph.add_run(part)
-        run.font.name = FONT
-        run.font.size = Pt(size)
-        run.bold = bold or i % 2 == 1
-        run.italic = italic
+        part_bold = bold or i % 2 == 1
+        pos = 0
+        for match in LINK_RE.finditer(part):
+            if match.start() > pos:
+                add_text_run(paragraph, part[pos:match.start()], size, part_bold, italic)
+            if match.group("label"):
+                label, url = match.group("label"), match.group("url")
+            elif match.group("email"):
+                label = match.group("email")
+                url = "mailto:" + label
+            else:
+                label = match.group("web")
+                url = label if label.startswith("http") else "https://" + label
+            add_hyperlink(paragraph, label, url, size, part_bold, italic)
+            pos = match.end()
+        if pos < len(part):
+            add_text_run(paragraph, part[pos:], size, part_bold, italic)
 
 
 def spacing(paragraph, before=0, after=2):
