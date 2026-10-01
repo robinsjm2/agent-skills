@@ -67,7 +67,7 @@ Activate this skill when the user asks any of the following:
    - **Untracked application** — evidence of an application missing from the tracker (always show)
    - **Action required** — e.g. a pending assessment, scheduling request, or form to complete (always show, with any deadline)
    - **New recruiter outreach** — someone proactively reaching out (evaluate fit and show if relevant)
-   - **Automated rejection** — form rejection (mention count only, but update the tracker status for tracked applications)
+   - **Automated rejection** — form rejection (mention count only, but update Status and Stage in the tracker for tracked applications)
    - **Other** — flag if potentially relevant
 6. When a role in the job alerts is at a company with an open application in the tracker, note it ("already applied to <other role> on <date>") rather than presenting it as a fresh lead.
 
@@ -107,8 +107,20 @@ Found X relevant job alerts (Y already applied, excluded), Z recruiter/outreach 
 
 When the user submits an application, add a row to `~/.jobsearch/applications.md`:
 ```
-| [today's date] | [Company] | [Role] | [Source] | Applied | |
+| [today's date] | [Company] | [Role] | [Source] | Applied | Submitted | |
 ```
+
+When an email updates a tracked application, update its **Status** and **Stage** using the definitions in the tracker file. Stage is the furthest point the application reached:
+
+- Invitation to an assessment or coding test → Stage `Assessment`
+- Recruiter call scheduled → `Recruiter screen`; technical interview scheduled → `Technical interview`; onsite or final loop → `Final round`
+- Rejection that mentions reviewing your resume or application → Status `Rejected`, Stage `Resume screen`
+- Rejection that mentions assessment results → Status `Rejected`, Stage `Assessment`
+- Rejection after an interview → Status `Rejected`, Stage is that interview stage
+- Form rejection that gives no stage, with no earlier screen or interview on record → Status `Rejected`, Stage `Resume screen (inferred)`
+- Job closed or no longer recruiting → Status `Closed by employer`, Stage unchanged
+
+Never move a Stage backwards. Note the date of the update in the Notes column.
 
 When a recruiter makes contact, add a row to the recruiter outreach log in the same file.
 

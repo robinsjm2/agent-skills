@@ -96,7 +96,7 @@ After presenting, save a short record to `~/.jobsearch/notes/sweeps/YYYY-MM-DD.m
 
 When the user says they applied to a role from a sweep, add a row to `~/.jobsearch/applications.md`:
 ```
-| [today's date] | [Company] | [Role] | Indeed | Applied | |
+| [today's date] | [Company] | [Role] | Indeed | Applied | Submitted | |
 ```
 
 ## Tool notes
