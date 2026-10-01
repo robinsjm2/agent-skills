@@ -6,6 +6,18 @@ Skills in this repo are generic by design. Personal configuration stays in your 
 
 Each skill is a folder containing a `SKILL.md`, following the [Agent Skills](https://agentskills.io) format: YAML frontmatter with a `name` and a `description` (which the agent uses to decide when to apply the skill), followed by the instructions.
 
+## See It in Action
+
+Recorded live in Claude Code with a fictional demo profile from [jobsearch-harness](https://github.com/robinsjm2/jobsearch-harness/tree/main/examples/demo-persona). Job listings are real, public Indeed results; email comes from a mock inbox.
+
+**[job-search-sweep](skills/job-search-sweep/SKILL.md)**: find and verify new openings.
+
+![job-search-sweep demo](https://raw.githubusercontent.com/robinsjm2/jobsearch-harness/main/docs/media/job-search-sweep.gif)
+
+**[gmail-job-search](skills/gmail-job-search/SKILL.md)**: check application status and update the tracker.
+
+![application status demo](https://raw.githubusercontent.com/robinsjm2/jobsearch-harness/main/docs/media/application-status.gif)
+
 ## Philosophy
 
 - Skills define *behavior*, not *preferences*
