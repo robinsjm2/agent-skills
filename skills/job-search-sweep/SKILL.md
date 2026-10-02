@@ -31,7 +31,7 @@ If either file is missing, tell the user and point them to the templates. Do not
 
 ### 2. Search
 
-Build 4–6 targeted queries rather than one broad one; each search returns only a handful of results.
+Build 4–5 targeted queries rather than one broad one; each search returns only a handful of results. Run them **one at a time**, not in parallel (see Rate limits).
 
 - Combine the criteria's **primary role types** with its **strongest technical areas**, e.g. "senior backend engineer AWS serverless" or "staff platform engineer".
 - Include secondary role types only if the user asks, or if primary searches return little.
@@ -52,7 +52,7 @@ Keep, but mark as stale, postings older than about 60 days.
 
 ### 4. Verify with full details
 
-Call `get_job_details` for each remaining candidate. Cap this at about 12 per sweep, and prioritize by title fit and pay. From the full posting, determine:
+Call `get_job_details` for each remaining candidate, **one at a time**. Cap this at about 8 per sweep, and prioritize by title fit and pay. From the full posting, determine:
 
 - **Actual work location.** A remote search still returns on-site and hybrid roles, and the summary location is often just headquarters. Look for explicit statements such as "Work Location: Remote", "remote-first", "remote friendly", "hybrid", or "on-site", and state which one you found. If the posting never says, report remote status as **unconfirmed**. Do not assume remote.
 - **Compensation**, including the full range.
@@ -106,6 +106,15 @@ When the user says they applied to a role from a sweep, add a row to `~/.jobsear
 - `search_jobs` has no filters for pay, remote status or seniority. Apply the criteria yourself after searching.
 - Job IDs (e.g. `JOBSEARCH_100002`) are temporary and only valid in the current session. Identify roles by company + title in files and the tracker.
 - `get_company_data` accepts one company per call and returns salary data only when given a job title.
+
+## Rate limits
+
+The Indeed connector limits calls per account over short and longer windows. Heavy use (several sweeps in a day, or parallel calls) triggers "Rate limit exceeded… try again in N seconds".
+
+- **Never call Indeed tools in parallel.** Make one call, wait for its result, then make the next.
+- **Keep each sweep small:** about 4–5 searches, up to ~8 detail checks, and company checks only for Strong matches (usually 1–2).
+- **One full sweep per day is plenty.** For a second look the same day, run 1–2 narrow searches, not a full sweep.
+- **When rate-limited:** wait the number of seconds given, then retry once. If the wait grows or the retry is also limited, **stop**. Report what was completed, save a partial sweep record noting where it stopped, and suggest trying again in an hour or two. Repeated retries extend the limit.
 
 ## What not to do
 
