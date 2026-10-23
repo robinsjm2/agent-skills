@@ -79,4 +79,25 @@ or `/tailor-resume`
 
 ---
 
+## Coding Style
+
+### [codelikeme](skills/codelikeme/SKILL.md)
+
+Makes the agent write CDK, Python, and TypeScript the way you want it, from a short list of rules.
+
+**What it does:**
+- Applies shared rules for every language: full-word names, no magic strings, standard tools over hand-rolled code, visible configuration, documentation-backed claims, tests plus a real deploy, clean history, least privilege
+- Adds language rules for [CDK](skills/codelikeme/cdk.md), [Python](skills/codelikeme/python.md), and [TypeScript](skills/codelikeme/typescript.md)
+- Says in one line when a rule changed its approach, and offers to add a rule when you correct it in a way none covers
+
+**Requires:** nothing
+
+**Invoke with:**
+```
+write this the way I like it
+```
+or `/codelikeme`
+
+---
+
 *More skills coming. Topics in progress: Tyme sprint review, LinkedIn post drafting, technical interview prep.*

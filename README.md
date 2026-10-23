@@ -58,6 +58,7 @@ See [SKILLS.md](SKILLS.md) for the full index with descriptions and requirements
 | [gmail-job-search](skills/gmail-job-search/SKILL.md) | Filter job alert emails and recruiter outreach against your personal criteria | Gmail MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
 | [job-search-sweep](skills/job-search-sweep/SKILL.md) | Search Indeed for new openings and verify remote status, pay, and fit from the full postings | Indeed MCP, `~/.jobsearch/job-criteria.md`, `~/.jobsearch/applications.md` |
 | [tailor-resume](skills/tailor-resume/SKILL.md) | Tailor a resume to one posting from a verified fact bank, render .docx, and learn from outcomes | `~/.jobsearch/resume/` fact bank and lessons, `uv` |
+| [codelikeme](skills/codelikeme/SKILL.md) | Write CDK, Python, and TypeScript the way you want it, from short rules (shared, CDK, Python, TypeScript) | Nothing |
 
 ## Related
 
