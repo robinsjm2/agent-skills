@@ -75,28 +75,29 @@ Activate this skill when the user asks any of the following:
 
 ## Output format
 
+**Default to a concise summary.** The user can ask to expand any item (or all of them) for details. Do not pre-emptively give the full write-up.
+
 ### Job alerts section
 
-For each relevant posting:
+One line per relevant posting, strongest matches first:
 ```
-**[Role Title] — [Company]**
-- Location/Remote: [status]
-- Compensation: [amount or "not disclosed"]
-- Source: [job board]
-- Fit: Strong match / Possible match
-- Why: [2–3 sentences on alignment and any meaningful gaps]
+**[Role] — [Company]** · [Strong/Possible] · [comp or "comp n/a"] · [remote status] · [≤10-word reason or key gap]
 ```
+
+Do not list excluded, already-applied, contract, or below-floor roles; they appear only as counts in the summary line.
 
 ### Recruiter/outreach section
 
-For each message:
+Only items that need the user's attention, one line each:
 ```
-**[Sender name or company] — [Subject line]**
-- Type: Follow-up on existing application / New recruiter outreach / Other
-- Role: [title if mentioned]
-- Fit: Strong match / Possible match / Below criteria / N/A (existing application)
-- Action needed: [Reply, Review, No action]
+**[Sender/Company] — [Role]** · [Type] · [Action: Reply / Review / No action]
 ```
+
+Mention automated rejections and routine confirmations of tracked applications as a single count. Always show action-required items and deadlines, and untracked applications.
+
+### Closing
+
+End with a single line offering to expand details (e.g. "Want details on any of these?"). When the user asks to expand, then give, per item: location/remote, compensation, source, fit, and 2–3 sentences on alignment and gaps. Excluded roles stay as counts even when expanded; only list them by name if the user explicitly asks to see them.
 
 ### Summary line
 
