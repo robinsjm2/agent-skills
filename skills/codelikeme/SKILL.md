@@ -33,3 +33,4 @@ The user's coding rules, as short imperatives. They come from the corrections an
 12. **Do not hold what you do not need.** Hand sensitive data to a provider built for it (hosted payments, federated sign-in). Make location and similar data opt-in, and never store it exactly.
 13. **Explain in words, keep code in files.** Do not paste long code into the chat; describe what changed and why.
 14. **Do not show diffs the user can already see.** Their IDE's source control panel shows every change. Report outcomes, decisions and anything surprising; do not walk through each edit or paste a diff.
+15. **Delete a branch once its PR is merged.** After the merge is confirmed, remove the branch locally and on the remote so old branches do not pile up. Only for merged branches; never delete one with unmerged work.
